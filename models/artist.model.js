@@ -1,14 +1,13 @@
 const mongoose = require('mongoose');
 
 const artistSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
+  name: String,
+  artistWikiHref: String,
+  location: String,
   bio: String,
-  imageURL: [String],
-  lastFmurl: String,
-  genre: String
+  imageURL: String,
+  genre: String,
+
 }, { timestamps: true, });
 
 const Artist = mongoose.model('Artist', artistSchema);

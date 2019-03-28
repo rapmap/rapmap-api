@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "script": "node ./bin/scripts/getLastfmData"
+    "script": "node ./bin/scripts/getLastfmData",
+    "tomongo": "node ./bin/scripts/saveToMongo"
   },
   "dependencies": {
     "axios": "^0.18.0",
