@@ -12,11 +12,11 @@ rappersList.map(rapper => {
       // if (rapper.originPlace) ciudad = rapper.originPlace;
       // if (rapper.bornPlace)   ciudad = rapper.bornPlace;
       const artist = new Artist({
-        name: rapper.name,
+        name: rapper.artist,
         artistWikiHref: rapper.name,
         location: ciudad,
         bio: rapper.bio,
-        imageURL: rapper.imgURL,
+        imageURL: 'https:'+rapper.imageUrl, //revisar siempre en el rapper.json el campo imageUrl
         genre: rapper.genres
       })
       artist.save()
