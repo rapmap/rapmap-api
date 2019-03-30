@@ -69,6 +69,3 @@ getRapArtist(1)
 // for(let i = 1; i < 3; i++) {
 //   getRapArtist(i)
 // }
-
-  
-console.log("aa")

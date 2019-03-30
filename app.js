@@ -7,7 +7,9 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 const cors = require('./configs/cors.config');
 
-require('./configs/db.config');
+const artistsRoutes = require('./routes/artists.routes');
+
+require('./configs/db.configs');
 
 const app = express();
 
@@ -16,6 +18,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors);
+
+
+app.use('/', artistsRoutes);
+
 
 // 404
 app.use(function(req, res, next) {

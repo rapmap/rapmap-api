@@ -7,7 +7,12 @@ const artistSchema = new mongoose.Schema({
   bio: String,
   imageURL: String,
   genre: String,
-
+  songs: [
+    { name: String }
+  ],
+  related: [
+    { name: String }
+  ]
 }, { timestamps: true, });
 
 const Artist = mongoose.model('Artist', artistSchema);
