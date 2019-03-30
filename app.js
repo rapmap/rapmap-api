@@ -5,6 +5,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
+const cors = require('./configs/cors.config');
 
 require('./configs/db.config');
 
@@ -14,6 +15,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cors);
 
 // 404
 app.use(function(req, res, next) {
