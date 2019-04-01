@@ -8,10 +8,15 @@ const artistSchema = new mongoose.Schema({
   imageURL: String,
   genre: String,
   songs: [
-    { name: String }
+    { name: String,
+      imageURL: String,
+      songURL: String,
+     }
   ],
   related: [
-    { name: String }
+    { name: String,
+      imageURL: String,
+    }
   ]
 }, { timestamps: true, });
 

@@ -16,7 +16,7 @@ spotifyApi.clientCredentialsGrant()
     console.log('Something went wrong when retrieving an access token', err);
 });
 
-module.exports.getArtistReatedInfo = (artist) => {
+module.exports.getArtistRelatedInfo = (artist) => {
   return spotifyApi.searchArtists(artist.name)
     .then(res => {
       const { id } = res.body.artists.items.find(
@@ -26,7 +26,8 @@ module.exports.getArtistReatedInfo = (artist) => {
           spotifyApi.getArtistRelatedArtists(id)
         ])
     }).then(([traksRes, relatedRes]) => {
-      console.log(relatedRes.body)
+      // console.log('related',relatedRes.body)
+      // const { name, href, images } = traksRes.body.tracks[0].album
       return Promise.resolve([
         traksRes.body.tracks,
         relatedRes.body.artists
@@ -34,18 +35,5 @@ module.exports.getArtistReatedInfo = (artist) => {
     })
   
 }
-
-
-/**
-const { body } = await spotifyApi.searchArtists(artist.name)
-const { id } = 
-  body.artists.items.find(
-    item => item.name.toLowerCase() === artist.name.toLowerCase() && item.genres.includes('hip hop'))
-console.info('UNIQUE => ', id)
-const related = await spotifyApi.getArtistRelatedArtists(id)
-console.info('RELATED => ', related)
-const topTracks = await spotifyApi.getArtistTopTracks(id, 'GB')
-console.info('TRACKS => ', topTracks.body.tracks)
- */
   
 module.exports.api = spotifyApi;  
