@@ -3,9 +3,12 @@ const spotifyService = require('../services/spotify.service');
 
 const createError = require('http-errors');
 
-// module.exports.list = (req, res, next) => {
+module.exports.list = (req, res, next) => {
+  Artist.find()
+    .then(artist => console.log(artist) || res.json(artist))
+    .catch(next);
 
-// }
+}
 
 module.exports.get = (req, res, next) => {
   Artist.findOne({name: req.params.name})
@@ -16,15 +19,18 @@ module.exports.get = (req, res, next) => {
       }
       return spotifyService.getArtistRelatedInfo(artist)
         .then(([traks, related]) => {
+          
           /**
            * Este map debería ir aquí?, si es así, no merece la pena traer 'related' de getArtistRelatedInfo
            */
-          const relatedList = artist.related.map(relatedArtist => relatedArtist.name)
-          console.info('COSAS => ', relatedList)
+
+
+          /** const relatedList = artist.related.map(relatedArtist => relatedArtist.name) // mirar */
+          /** console.info('COSAS => ', relatedList) // mirar */
           return Artist.findOneAndUpdate(
             { name: artist.name }, 
             { $set: { 
-              related: relatedList, 
+              /** related: relatedList, //mirar */
               songs: {
                 name: traks.name,
                 imageURL: traks.url,

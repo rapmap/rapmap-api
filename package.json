@@ -9,6 +9,7 @@
     "tomongo": "node ./bin/scripts/saveToMongo"
   },
   "dependencies": {
+    "@google/maps": "^0.5.5",
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.2",
     "connect-mongo": "^2.0.3",
